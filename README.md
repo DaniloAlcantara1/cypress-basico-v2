@@ -1,4 +1,5 @@
-![image](![cypress](https://github.com/user-attachments/assets/97850d22-058e-460f-ac53-81f9f1e73183))
+![cypress](https://github.com/user-attachments/assets/9e0a4d87-9d8f-435f-8540-144afe832985)
+
 
 # Testes automatizados com Cypress Básico da Talking About Testing
 
