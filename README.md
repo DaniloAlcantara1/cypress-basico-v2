@@ -1,12 +1,14 @@
-# Testes automatizados com Cypress - Básico
+![image](![cypress](https://github.com/user-attachments/assets/97850d22-058e-460f-ac53-81f9f1e73183))
+
+# Testes automatizados com Cypress Básico da Talking About Testing
 
 👋 Seja bem-vindo(a)!
 
-É muito bom tê-lo(a) aqui. Tenho certeza que você vai adorar este curso. ❤️
+É muito bom tê-lo(a) aqui. 
 
-## O que você vai aprender
+## O que temos aqui
 
-Durante o curso de testes automatizados com Cypress (básico), você vai aprender:
+Durante o curso de testes automatizados com Cypress (básico), foi demonstrado:
 
 - Como configurar um projeto Cypress do zero
 - Como visitar páginas locais e remotas
@@ -20,10 +22,48 @@ Durante o curso de testes automatizados com Cypress (básico), você vai aprende
 - Como executar os testes em um _pipeline_ de integração contínua sempre que mudanças ocorrerem no código da aplicação (ou dos testes)
 - Como criar uma documentação mínima para seu projeto de testes automatizados
 
-## Vamos começar?
 
-Vá para a seção [estrutura do curso](./lessons/_course-structure_.md).
 
-___
+## 🤘 Sobre
 
-Este é mais um curso da [**Escola Talking About Testing**](https://udemy.com/user/walmyr).
+Repositório do projeto de testes automatizados do sistema CAC-TAT, construído no curso Testes automatizados com Cypress - Básico
+
+# 💻 Tecnologias
+- Node.js - https://nodejs.org/en
+- Cypress - https://www.cypress.io/
+- Javascript - https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
+- Vscode - https://code.visualstudio.com/
+
+
+## 🤖 Como executar
+Clonar o repositório utilizando git, acesse a pasta do porjeto via terminal instale as dependências com o comando abaixo
+```
+npm install
+```
+
+## Desktop
+
+
+Para Executar testes em Headless utilize o comando
+```
+npm test
+```
+
+Executar via Test Runner
+```
+npm run cy:open
+```
+## Mobile
+
+
+Para Executar testes em Headless utilize o comando
+```
+npm test:mobile
+```
+
+Executar via Test Runner
+```
+npm run cy:open:mobile
+```
+
+<hr>
