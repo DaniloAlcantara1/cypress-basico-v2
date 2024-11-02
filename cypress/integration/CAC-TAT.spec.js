@@ -239,7 +239,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
 
     })
 
-    it.only('realiza upload de arquivo em formulario', () => {
+    it('realiza upload de arquivo em formulario', () => {
 
         cy.get('input[type="file"]')
             .selectFile('cypress/fixtures/O FILME.png')
@@ -248,7 +248,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
             })
     })
 
-    it.only('realiza upload de arquivo em formulario com drag and drop', () => {
+    it('realiza upload de arquivo em formulario com drag and drop', () => {
 
         cy.get('input[type="file"]')
             .selectFile('cypress/fixtures/O FILME.png', {action: 'drag-drop'})
