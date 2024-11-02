@@ -239,19 +239,19 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
 
     })
 
-    it('realiza upload de arquivo em formulario', () => {
+    it.only('realiza upload de arquivo em formulario', () => {
 
         cy.get('input[type="file"]')
-            .selectFile('C:/automation/cypress-basico-v2/O FILME.png')
+            .selectFile('cypress/fixtures/O FILME.png')
             .then(input => {
                 expect(input[0].files[0].name).to.equal('O FILME.png')
             })
     })
 
-    it('realiza upload de arquivo em formulario com drag and drop', () => {
+    it.only('realiza upload de arquivo em formulario com drag and drop', () => {
 
         cy.get('input[type="file"]')
-            .selectFile('C:/automation/cypress-basico-v2/O FILME.png', {action: 'drag-drop'})
+            .selectFile('cypress/fixtures/O FILME.png', {action: 'drag-drop'})
             .then(input => {
                 expect(input[0].files[0].name).to.equal('O FILME.png')
             })
