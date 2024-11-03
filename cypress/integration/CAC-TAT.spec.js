@@ -20,6 +20,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
 
     it('1 -preenche os campos obrigatórios e envia o formulário', function () {
 
+        cy.clock()
         cy.get('input[name="firstName"]').type('João')
         cy.get('input[name="lastName"]').type('Mendes')
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com.br')
@@ -27,10 +28,14 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button[type="submit"]', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
+
     })
 
     it('1 extra - preenche os campos obrigatórios e envia o formulário com delay', function () {
 
+        cy.clock()
         const longtext = 'É preciso escolher um caminho que não tenha fim, mas, ainda assim, caminhar sempre na expectativa de encontrá-lo.'
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
@@ -39,6 +44,8 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button[type="submit"]', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
     it('2 extra - exibe mensagem de erro ao submeter o formulário com um email com formatação inválida', function () {
@@ -53,7 +60,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
     })
 
     it('3 extra - campo de telefone só aceita números e continua vazio se preenchido com valor não numerico', function () {
-
+        cy.clock()
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -66,6 +73,8 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button[type="submit"]', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
     it('4 extra - exibe mensagem de erro quando o telefone se torna obrigatório mas não é preenchido antes do envio do formulário', function () {
@@ -150,6 +159,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
 
     it('seleciona um produto (YouTube) por seu texto', function () {
 
+        cy.clock()
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -160,11 +170,14 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
 
     it('seleciona um produto (Mentoria) por seu valor (value)', function () {
 
+        cy.clock()
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -175,10 +188,13 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
     it('seleciona um produto (Blog) por seu índice', function () {
 
+        cy.clock()
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -189,10 +205,13 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
     it('marca o tipo de atendimento "Feedback"', function () {
 
+        cy.clock()
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -206,10 +225,13 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000)
+        cy.get('.success').should('not.be.visible')
     })
 
     it('marca cada tipo de atendimento', function () {
 
+        cy.clock()//para o relógio do navegador
         cy.get('input[name="firstName"]').type('João', { delay: 0 })
         cy.get('input[name="lastName"]').type('Mendes', { delay: 0 })
         cy.get('input[type="email"]').type('joao.mendes@yahoo.com', { delay: 0 })
@@ -228,6 +250,8 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
         cy.contains('button', 'Enviar').click()
 
         cy.get('.success').should('be.visible')
+        cy.tick(3000) //avança 3 segundos no tempo
+        cy.get('.success').should('not.be.visible')
     })
 
     it('marca ambos checkboxes, depois desmarca o último', function () {
@@ -251,14 +275,14 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
     it('realiza upload de arquivo em formulario com drag and drop', () => {
 
         cy.get('input[type="file"]')
-            .selectFile('cypress/fixtures/O FILME.png', {action: 'drag-drop'})
+            .selectFile('cypress/fixtures/O FILME.png', { action: 'drag-drop' })
             .then(input => {
                 expect(input[0].files[0].name).to.equal('O FILME.png')
             })
     })
 
     it('realiza upload de arquivo em formulario com fixture', () => {
-        cy.fixture('O FILME.png', {encoding: null}).as('exampleFile')
+        cy.fixture('O FILME.png', { encoding: null }).as('exampleFile')
         cy.get('input[type="file"]')
             .selectFile({
                 contents: '@exampleFile',
@@ -269,21 +293,34 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
             })
     })
 
-    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', ()=>{
+    it('verifica que a política de privacidade abre em outra aba sem a necessidade de um clique', () => {
 
         cy.get('#privacy a').should('have.attr', 'target', '_blank')
     })
 
-    it('acessa a página da política de privacidade removendo o target e então clicando no link', ()=>{
+    it('acessa a página da política de privacidade removendo o target e então clicando no link', () => {
 
         cy.get('a[target="_blank"]').invoke('removeAttr', 'target').click()
         cy.contains('Talking About Testing').should('be.visible')
     })
 
-    
-
-
-
+    it('exibe e esconde as mensagens de sucesso e erro usando 0 .invoke', () => {
+        
+        cy.get('.success')
+            .should('not.be.visible')
+            .invoke('show')
+            .should('be.visible')
+            .and('contain', 'Mensagem enviada com sucesso.')
+            .invoke('hide')
+            .should('not.be.visible')
+        cy.get('.error')
+            .should('not.be.visible')
+            .invoke('show')
+            .should('be.visible')
+            .and('contain', 'Valide os campos obrigatórios!')
+            .invoke('hide')
+            .should('not.be.visible')
+    })
 
 })
 
