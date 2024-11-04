@@ -305,7 +305,7 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
     })
 
     it('exibe e esconde as mensagens de sucesso e erro usando 0 .invoke', () => {
-        
+
         cy.get('.success')
             .should('not.be.visible')
             .invoke('show')
@@ -322,7 +322,46 @@ describe('preenche os campos obrigatórios e envia o formulário', function () {
             .should('not.be.visible')
     })
 
+    it('preenche a area de texto usando o comando invoke', () => {
+        const longtext = Cypress._.repeat('isto é um teste', 20)
+
+        cy.get('#open-text-area')
+            .invoke('val', longtext)
+            .should('have.value', longtext)
+
+        //expect(cy.get('#open-text-area')).to.have.text(longtext)
+    })
+
+    it('faz uma requisição http', function () {
+        cy.request('https://cac-tat.s3.eu-central-1.amazonaws.com/index.html')
+            .should(function (response) {
+                const { status, body } = response
+                expect(status).to.equal(200)
+                //expect(statustText).to.equal('OK')
+                expect(body).to.include('CAC TAT')
+            })
+
+
+    })
+
+
+    it.only('Achar o gato', () => {
+
+        cy.get('#cat')
+            .should('not.be.visible')
+            .invoke('show')
+            .should('be.visible')
+
+        cy.get('#title')    
+            .invoke('text', 'CAT TAT')
+
+            cy.get('#subtitle')    
+            .invoke('text', 'PREFIRO CACHORRO 🐶❤️ ')    
+        })
 })
+
+
+
 
 
 
